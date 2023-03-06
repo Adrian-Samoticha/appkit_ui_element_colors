@@ -8,7 +8,8 @@ abstract class AppkitUiElementColorsPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static AppkitUiElementColorsPlatform _instance = MethodChannelAppkitUiElementColors();
+  static AppkitUiElementColorsPlatform _instance =
+      MethodChannelAppkitUiElementColors();
 
   /// The default instance of [AppkitUiElementColorsPlatform] to use.
   ///

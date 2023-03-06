@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 
 import 'appkit_ui_element_colors_platform_interface.dart';
 
-/// An implementation of [AppkitUiElementColorsPlatform] that uses method channels.
+/// An implementation of [AppkitUiElementColorsPlatform] that uses method
+/// channels.
 class MethodChannelAppkitUiElementColors extends AppkitUiElementColorsPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
@@ -11,7 +12,8 @@ class MethodChannelAppkitUiElementColors extends AppkitUiElementColorsPlatform {
 
   @override
   Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
+    final version =
+        await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
 }

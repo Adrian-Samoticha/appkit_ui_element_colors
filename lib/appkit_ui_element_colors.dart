@@ -1,4 +1,3 @@
-
 import 'appkit_ui_element_colors_platform_interface.dart';
 
 class AppkitUiElementColors {

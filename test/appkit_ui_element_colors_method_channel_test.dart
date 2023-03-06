@@ -3,7 +3,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:appkit_ui_element_colors/appkit_ui_element_colors_method_channel.dart';
 
 void main() {
-  MethodChannelAppkitUiElementColors platform = MethodChannelAppkitUiElementColors();
+  MethodChannelAppkitUiElementColors platform =
+      MethodChannelAppkitUiElementColors();
   const MethodChannel channel = MethodChannel('appkit_ui_element_colors');
 
   TestWidgetsFlutterBinding.ensureInitialized();

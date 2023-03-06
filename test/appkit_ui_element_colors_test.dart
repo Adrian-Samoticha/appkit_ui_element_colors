@@ -7,13 +7,13 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 class MockAppkitUiElementColorsPlatform
     with MockPlatformInterfaceMixin
     implements AppkitUiElementColorsPlatform {
-
   @override
   Future<String?> getPlatformVersion() => Future.value('42');
 }
 
 void main() {
-  final AppkitUiElementColorsPlatform initialPlatform = AppkitUiElementColorsPlatform.instance;
+  final AppkitUiElementColorsPlatform initialPlatform =
+      AppkitUiElementColorsPlatform.instance;
 
   test('$MethodChannelAppkitUiElementColors is the default instance', () {
     expect(initialPlatform, isInstanceOf<MethodChannelAppkitUiElementColors>());
@@ -21,7 +21,8 @@ void main() {
 
   test('getPlatformVersion', () async {
     AppkitUiElementColors appkitUiElementColorsPlugin = AppkitUiElementColors();
-    MockAppkitUiElementColorsPlatform fakePlatform = MockAppkitUiElementColorsPlatform();
+    MockAppkitUiElementColorsPlatform fakePlatform =
+        MockAppkitUiElementColorsPlatform();
     AppkitUiElementColorsPlatform.instance = fakePlatform;
 
     expect(await appkitUiElementColorsPlugin.getPlatformVersion(), '42');
