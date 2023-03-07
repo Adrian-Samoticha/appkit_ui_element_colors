@@ -7,14 +7,6 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
     let instance = AppkitUiElementColorsPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
-  
-  private static func convertColorToColorSpace(color: NSColor, colorSpace: NSColorSpace) -> NSColor {
-    return color.usingColorSpace(colorSpace)!
-  }
-  
-  private static func convertColorToDictionary(color: NSColor, components: Array<NSColorComponent>) -> Dictionary<String, CGFloat> {
-    return Dictionary(uniqueKeysWithValues: components.map { ($0.toName(), $0.toValueForColor(color)) })
-  }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     let args: [String: Any] = call.arguments as? [String: Any] ?? [:]
@@ -33,9 +25,10 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
       let colorSpaceAsString = args["colorSpace"] as! String
       let colorSpace = NSColorSpaceNameToColorSpaceConverter.convert(colorSpaceAsString)
       
-      let convertedColor = AppkitUiElementColorsPlugin.convertColorToColorSpace(color: color, colorSpace: colorSpace!)
+      let colorUsingRequestedColorSpace = color.usingColorSpace(colorSpace!)
+      let dictionary = NSColorToDictionaryConverter.convert(color: colorUsingRequestedColorSpace!, components: components)
       
-      result(AppkitUiElementColorsPlugin.convertColorToDictionary(color: convertedColor, components: components))
+      result(dictionary)
         
     default:
       result(FlutterMethodNotImplemented)
