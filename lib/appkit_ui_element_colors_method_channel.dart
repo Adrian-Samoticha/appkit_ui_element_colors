@@ -29,4 +29,13 @@ class MethodChannelAppkitUiElementColors extends AppkitUiElementColorsPlatform {
 
     return Map<String, double>.from(dynamicMap);
   }
+
+  @override
+  Future<Color> getColor(UiElementColor uiElementColor) async {
+    final int hash = await methodChannel.invokeMethod('getColor', {
+      'uiElementColor': uiElementColor.name,
+    });
+
+    return Color(hash);
+  }
 }

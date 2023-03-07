@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'appkit_ui_element_colors.dart';
@@ -31,6 +33,10 @@ abstract class AppkitUiElementColorsPlatform extends PlatformInterface {
 
   Future<Map<String, double>> getColorComponents(UiElementColor uiElementColor,
       Set<NSColorComponent> components, NSColorSpace colorSpace) {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<Color> getColor(UiElementColor uiElementColor) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }

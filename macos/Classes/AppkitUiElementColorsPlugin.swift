@@ -29,6 +29,16 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
       let dictionary = NSColorToDictionaryConverter.convert(color: colorUsingRequestedColorSpace!, components: components)
       
       result(dictionary)
+      
+    case "getColor":
+      let colorName = args["uiElementColor"] as! String
+      let color = NSColorNameToColorConverter.convert(colorName)
+      
+      let colorUsingSRGBColorspace = color.usingColorSpace(.sRGB)
+      
+      let hash = NSColorToHashConverter.convert(colorUsingSRGBColorspace!)
+      
+      result(hash)
         
     default:
       result(FlutterMethodNotImplemented)

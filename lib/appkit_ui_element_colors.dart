@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:appkit_ui_element_colors/macos/ns_color_component.dart';
 import 'package:appkit_ui_element_colors/macos/ns_color_space.dart';
 import 'package:appkit_ui_element_colors/macos/ui_element_color.dart';
@@ -17,5 +19,9 @@ class AppkitUiElementColors {
       Set<NSColorComponent> components, NSColorSpace colorSpace) {
     return AppkitUiElementColorsPlatform.instance
         .getColorComponents(uiElementColor, components, colorSpace);
+  }
+
+  Future<Color> getColor(UiElementColor uiElementColor) {
+    return AppkitUiElementColorsPlatform.instance.getColor(uiElementColor);
   }
 }
