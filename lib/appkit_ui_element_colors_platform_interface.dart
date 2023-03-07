@@ -29,7 +29,7 @@ abstract class AppkitUiElementColorsPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<Map<String, double>> getColor(UiElementColor uiElementColor,
+  Future<Map<String, double>> getColorComponents(UiElementColor uiElementColor,
       Set<NSColorComponent> components, NSColorSpace colorSpace) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }

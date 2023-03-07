@@ -13,9 +13,9 @@ class AppkitUiElementColors {
     return AppkitUiElementColorsPlatform.instance.getPlatformVersion();
   }
 
-  Future<Map<String, double>> getColor(UiElementColor uiElementColor,
+  Future<Map<String, double>> getColorComponents(UiElementColor uiElementColor,
       Set<NSColorComponent> components, NSColorSpace colorSpace) {
     return AppkitUiElementColorsPlatform.instance
-        .getColor(uiElementColor, components, colorSpace);
+        .getColorComponents(uiElementColor, components, colorSpace);
   }
 }

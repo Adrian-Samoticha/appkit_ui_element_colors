@@ -19,9 +19,9 @@ class MethodChannelAppkitUiElementColors extends AppkitUiElementColorsPlatform {
   }
 
   @override
-  Future<Map<String, double>> getColor(UiElementColor uiElementColor,
+  Future<Map<String, double>> getColorComponents(UiElementColor uiElementColor,
       Set<NSColorComponent> components, NSColorSpace colorSpace) async {
-    final dynamicMap = await methodChannel.invokeMethod('getColor', {
+    final dynamicMap = await methodChannel.invokeMethod('getColorComponents', {
       'uiElementColor': uiElementColor.name,
       'components': components.map((e) => e.name).toList(),
       'colorSpace': colorSpace.name,
