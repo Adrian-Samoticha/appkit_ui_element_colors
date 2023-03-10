@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
@@ -50,13 +50,77 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
+    return CupertinoApp(
+      home: CupertinoPageScaffold(
+        navigationBar: const CupertinoNavigationBar(
+          middle: Text('Plugin example app'),
         ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+        child: UiElementColorBuilder(
+          builder: (context, colorContainer) {
+            return ListView.builder(
+              itemCount: UiElementColor.values.length,
+              itemBuilder: (context, index) {
+                final uiElementColor = UiElementColor.values[index];
+
+                return Container(
+                  color: index % 2 == 0
+                      ? colorContainer.alternatingContentBackgroundColors0
+                      : colorContainer.alternatingContentBackgroundColors1,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                    vertical: 4.0,
+                  ),
+                  child: Row(
+                    children: [
+                      Text(
+                        uiElementColor.name,
+                        style: TextStyle(
+                          color: colorContainer.textColor,
+                        ),
+                      ),
+                      const SizedBox(width: 12.0),
+                      DecoratedBox(
+                        decoration: const BoxDecoration(
+                          color: Color.fromRGBO(255, 255, 255, 1.0),
+                        ),
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: 8.0,
+                              height: 8.0,
+                              color: const Color.fromRGBO(0, 0, 0, 1.0),
+                            ),
+                            Positioned(
+                              right: 0.0,
+                              bottom: 0.0,
+                              child: Container(
+                                width: 8.0,
+                                height: 8.0,
+                                color: const Color.fromRGBO(0, 0, 0, 1.0),
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                border: const Border.fromBorderSide(
+                                  BorderSide(
+                                    color: Color.fromRGBO(128, 128, 128, 1.0),
+                                  ),
+                                ),
+                                color: colorContainer
+                                    .getColorFromUiElementColor(uiElementColor),
+                              ),
+                              width: 16.0,
+                              height: 16.0,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          },
         ),
       ),
     );
