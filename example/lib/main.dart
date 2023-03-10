@@ -115,6 +115,13 @@ class _MyAppState extends State<MyApp> {
                           ],
                         ),
                       ),
+                      const Spacer(),
+                      Text(
+                        '#${colorContainer.getColorFromUiElementColor(uiElementColor).value.toRadixString(16).padLeft(8, '0')}',
+                        style: TextStyle(
+                          color: colorContainer.textColor.withOpacity(0.5),
+                        ),
+                      ),
                     ],
                   ),
                 );
