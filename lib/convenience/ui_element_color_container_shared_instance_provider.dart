@@ -44,6 +44,7 @@ class UiElementColorContainerSharedInstanceProvider {
     final appearanceName = _getNSAppearanceNameFromBuildContext(context);
     final newUiElementColorContainer =
         await UiElementColorContainer.generate(appearanceName);
+
     if (newUiElementColorContainer != _sharedInstance) {
       _sharedInstance = newUiElementColorContainer;
       _onSharedInstanceUpdatedStreamController.add(newUiElementColorContainer);
