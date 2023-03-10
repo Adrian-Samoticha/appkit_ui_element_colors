@@ -100,8 +100,10 @@ class NSColorNameToColorConverter {
 
     case "selectedControlColor":
       return .selectedControlColor
+      
     case "selectedControlTextColor":
       return .selectedControlTextColor
+      
     case "alternateSelectedControlTextColor":
       return .alternateSelectedControlTextColor
 
