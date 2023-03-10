@@ -25,7 +25,18 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
       let colorSpaceAsString = args["colorSpace"] as! String
       let colorSpace = NSColorSpaceNameToColorSpaceConverter.convert(colorSpaceAsString)
       
-      let colorUsingRequestedColorSpace = color.usingColorSpace(colorSpace!)
+      let appearanceAsString = args["appearance"] as! String
+      let appearance = NSAppearanceNameToAppearanceConverter.convert(appearanceAsString)
+      
+      var colorUsingRequestedColorSpace: NSColor?
+      if #available(macOS 11.0, *) {
+        appearance?.performAsCurrentDrawingAppearance {
+          colorUsingRequestedColorSpace = color.usingColorSpace(colorSpace!)
+        }
+      } else {
+        colorUsingRequestedColorSpace = color.usingColorSpace(colorSpace!)
+      }
+      
       let dictionary = NSColorToDictionaryConverter.convert(color: colorUsingRequestedColorSpace!, components: components)
       
       result(dictionary)
@@ -34,10 +45,26 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
       let colorName = args["uiElementColor"] as! String
       let color = NSColorNameToColorConverter.convert(colorName)
       
-      let colorUsingSRGBColorspace = color.usingColorSpace(.sRGB)
+      let appearanceAsString = args["appearance"] as! String
+      let appearance = NSAppearanceNameToAppearanceConverter.convert(appearanceAsString)
       
-      let hash = NSColorToHashConverter.convert(colorUsingSRGBColorspace!)
+      var colorUsingSRGBColorSpace: NSColor?
+      if #available(macOS 11.0, *) {
+        appearance?.performAsCurrentDrawingAppearance {
+          colorUsingSRGBColorSpace = color.usingColorSpace(.deviceRGB)
+        }
+      } else {
+        colorUsingSRGBColorSpace = color.usingColorSpace(.deviceRGB)
+      }
       
+      // `NSColor.scrubberTexturedBackground` cannot be converted into `NSColorSpace.deviceRGB` color space. Therefore, return a transparent color instead.
+      if (colorUsingSRGBColorSpace == nil) {
+        result(0x00000000)
+        
+        return;
+      }
+      
+      let hash = NSColorToHashConverter.convert(colorUsingSRGBColorSpace!)
       result(hash)
         
     default:

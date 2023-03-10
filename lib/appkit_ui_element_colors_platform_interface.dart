@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:appkit_ui_element_colors/macos/ns_appearance_name.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'appkit_ui_element_colors.dart';
@@ -31,12 +32,16 @@ abstract class AppkitUiElementColorsPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<Map<String, double>> getColorComponents(UiElementColor uiElementColor,
-      Set<NSColorComponent> components, NSColorSpace colorSpace) {
+  Future<Map<String, double>> getColorComponents(
+      UiElementColor uiElementColor,
+      Set<NSColorComponent> components,
+      NSColorSpace colorSpace,
+      NSAppearanceName appearance) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<Color> getColor(UiElementColor uiElementColor) {
+  Future<Color> getColor(
+      UiElementColor uiElementColor, NSAppearanceName appearance) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 }
