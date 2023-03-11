@@ -3,8 +3,23 @@ import 'package:flutter/widgets.dart';
 
 import 'ui_element_color_container.dart';
 
-/// TODO: document this
+/// Widget that builds itself based on a global shared [UiElementContainer]
+/// instance provided by [UiElementColorContainerSharedInstanceProvider].
 class UiElementColorBuilder extends StatefulWidget {
+  /// Creates a [UiElementColorBuilder] that builds itself based on a global
+  /// shared [UiElementContainer] instance.
+  ///
+  /// [errorBuilder] and [missingDataBuilder] may be null, in which case they
+  /// are replaced with `const SizedBox()`.
+  ///
+  /// Example:
+  /// ```dart
+  /// UiElementColorBuilder(
+  ///   builder: (context, colorContainer) => Container(
+  ///     color: colorContainer.windowBackgroundColor,
+  ///   ),
+  /// );
+  /// ```
   const UiElementColorBuilder({
     super.key,
     required this.builder,
@@ -12,8 +27,13 @@ class UiElementColorBuilder extends StatefulWidget {
     this.missingDataBuilder,
   });
 
+  /// Called at build time to construct a widget tree.
   final Widget Function(BuildContext, UiElementColorContainer) builder;
+
+  /// Called when an error is encountered.
   final Widget Function(BuildContext, Object?)? errorBuilder;
+
+  /// Called when there is currently no [UiElementContainer] available.
   final Widget Function(BuildContext)? missingDataBuilder;
 
   @override
