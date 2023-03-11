@@ -40,7 +40,26 @@ class UiElementColorBuilder extends StatefulWidget {
   State<UiElementColorBuilder> createState() => _UiElementColorBuilderState();
 }
 
-class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
+class _UiElementColorBuilderState extends State<UiElementColorBuilder>
+    with WidgetsBindingObserver {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    UiElementColorContainerSharedInstanceProvider.maybeUpdate(context);
+    super.didChangePlatformBrightness();
+  }
+
   @override
   Widget build(BuildContext context) {
     UiElementColorContainerSharedInstanceProvider.maybeUpdate(context);
