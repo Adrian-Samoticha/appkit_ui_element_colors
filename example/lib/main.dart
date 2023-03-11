@@ -50,85 +50,145 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoApp(
+    return const CupertinoApp(
       home: CupertinoPageScaffold(
-        navigationBar: const CupertinoNavigationBar(
+        navigationBar: CupertinoNavigationBar(
           middle: Text('Plugin example app'),
         ),
-        child: UiElementColorBuilder(
-          builder: (context, colorContainer) {
-            return ListView.builder(
-              itemCount: UiElementColor.values.length,
-              itemBuilder: (context, index) {
-                final uiElementColor = UiElementColor.values[index];
+        child: _UiElementColorList(),
+      ),
+    );
+  }
+}
 
-                return Container(
-                  color: index % 2 == 0
-                      ? colorContainer.alternatingContentBackgroundColors0
-                      : colorContainer.alternatingContentBackgroundColors1,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 4.0,
+class _UiElementColorList extends StatelessWidget {
+  const _UiElementColorList();
+
+  @override
+  Widget build(BuildContext context) {
+    return UiElementColorBuilder(
+      builder: (context, colorContainer) {
+        return ListView.builder(
+          itemCount: UiElementColor.values.length,
+          itemBuilder: (context, index) {
+            final uiElementColor = UiElementColor.values[index];
+
+            return Container(
+              color: index % 2 == 0
+                  ? colorContainer.alternatingContentBackgroundColors0
+                  : colorContainer.alternatingContentBackgroundColors1,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+                vertical: 4.0,
+              ),
+              child: Row(
+                children: [
+                  _UiElementColorNameText(
+                    colorContainer: colorContainer,
+                    uiElementColor: uiElementColor,
                   ),
-                  child: Row(
-                    children: [
-                      Text(
-                        uiElementColor.name,
-                        style: TextStyle(
-                          color: colorContainer.textColor,
-                        ),
-                      ),
-                      const SizedBox(width: 12.0),
-                      DecoratedBox(
-                        decoration: const BoxDecoration(
-                          color: Color.fromRGBO(255, 255, 255, 1.0),
-                        ),
-                        child: Stack(
-                          children: [
-                            Container(
-                              width: 8.0,
-                              height: 8.0,
-                              color: const Color.fromRGBO(0, 0, 0, 1.0),
-                            ),
-                            Positioned(
-                              right: 0.0,
-                              bottom: 0.0,
-                              child: Container(
-                                width: 8.0,
-                                height: 8.0,
-                                color: const Color.fromRGBO(0, 0, 0, 1.0),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                border: const Border.fromBorderSide(
-                                  BorderSide(
-                                    color: Color.fromRGBO(128, 128, 128, 1.0),
-                                  ),
-                                ),
-                                color: colorContainer
-                                    .getColorFromUiElementColor(uiElementColor),
-                              ),
-                              width: 16.0,
-                              height: 16.0,
-                            ),
-                          ],
-                        ),
-                      ),
-                      const Spacer(),
-                      Text(
-                        '#${colorContainer.getColorFromUiElementColor(uiElementColor).value.toRadixString(16).padLeft(8, '0')}',
-                        style: TextStyle(
-                          color: colorContainer.textColor.withOpacity(0.5),
-                        ),
-                      ),
-                    ],
+                  const SizedBox(width: 12.0),
+                  _ColorPreview(
+                    uiElementColor: colorContainer
+                        .getColorFromUiElementColor(uiElementColor),
                   ),
-                );
-              },
+                  const Spacer(),
+                  _ColorHashText(
+                    colorContainer: colorContainer,
+                    uiElementColor: uiElementColor,
+                  ),
+                ],
+              ),
             );
           },
-        ),
+        );
+      },
+    );
+  }
+}
+
+class _UiElementColorNameText extends StatelessWidget {
+  const _UiElementColorNameText({
+    required this.colorContainer,
+    required this.uiElementColor,
+  });
+
+  final UiElementColorContainer colorContainer;
+  final UiElementColor uiElementColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      uiElementColor.name,
+      style: TextStyle(
+        color: colorContainer.textColor,
+      ),
+    );
+  }
+}
+
+class _ColorHashText extends StatelessWidget {
+  const _ColorHashText({
+    required this.colorContainer,
+    required this.uiElementColor,
+  });
+
+  final UiElementColorContainer colorContainer;
+  final UiElementColor uiElementColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      '#${colorContainer.getColorFromUiElementColor(uiElementColor).value.toRadixString(16).padLeft(8, '0')}',
+      style: TextStyle(
+        color: colorContainer.textColor.withOpacity(0.5),
+      ),
+    );
+  }
+}
+
+class _ColorPreview extends StatelessWidget {
+  const _ColorPreview({
+    required this.uiElementColor,
+  });
+
+  final Color uiElementColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: const BoxDecoration(
+        color: Color.fromRGBO(255, 255, 255, 1.0),
+      ),
+      child: Stack(
+        children: [
+          Container(
+            width: 8.0,
+            height: 8.0,
+            color: const Color.fromRGBO(0, 0, 0, 1.0),
+          ),
+          Positioned(
+            right: 0.0,
+            bottom: 0.0,
+            child: Container(
+              width: 8.0,
+              height: 8.0,
+              color: const Color.fromRGBO(0, 0, 0, 1.0),
+            ),
+          ),
+          Container(
+            decoration: BoxDecoration(
+              border: const Border.fromBorderSide(
+                BorderSide(
+                  color: Color.fromRGBO(128, 128, 128, 1.0),
+                ),
+              ),
+              color: uiElementColor,
+            ),
+            width: 16.0,
+            height: 16.0,
+          ),
+        ],
       ),
     );
   }
