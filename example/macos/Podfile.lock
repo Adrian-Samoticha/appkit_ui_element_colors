@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral
 
 SPEC CHECKSUMS:
-  appkit_ui_element_colors: 593af8868fe5680f5a8d3f13cdcdfa7b0827cb70
+  appkit_ui_element_colors: 9a391df2ee2317870cc42d73677af4d46ff3ec72
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
 
 PODFILE CHECKSUM: 353c8bcc5d5b0994e508d035b5431cfe18c1dea7
