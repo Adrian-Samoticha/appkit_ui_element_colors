@@ -45,6 +45,7 @@ class UiElementColorBuilder extends StatefulWidget {
 
 class _UiElementColorBuilderState extends State<UiElementColorBuilder>
     with WidgetsBindingObserver {
+  /// The stream subscription for stream of the [SystemColorObserver].
   late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
   @override
