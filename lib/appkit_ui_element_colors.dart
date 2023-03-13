@@ -13,6 +13,7 @@ export 'package:appkit_ui_element_colors/macos/ui_element_color.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_container.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_container_shared_instance_provider.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_builder.dart';
+export 'package:appkit_ui_element_colors/appkit_ui_element_colors_platform_interface.dart';
 
 class AppkitUiElementColors {
   Future<String?> getPlatformVersion() {
