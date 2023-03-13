@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:appkit_ui_element_colors/appkit_ui_element_colors_platform_interface.dart';
-import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_shared_instance_provider.dart';
+import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_owned_instance_provider.dart';
 import 'package:flutter/widgets.dart';
 
 import 'ui_element_color_container.dart';
@@ -45,6 +45,10 @@ class UiElementColorBuilder extends StatefulWidget {
 
 class _UiElementColorBuilderState extends State<UiElementColorBuilder>
     with WidgetsBindingObserver {
+  /// An [UiElementColorContainerOwnedInstanceProvider] instance.
+  UiElementColorContainerOwnedInstanceProvider colorContainerProvider =
+      UiElementColorContainerOwnedInstanceProvider();
+
   /// The stream subscription for stream of the [SystemColorObserver].
   late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
@@ -52,9 +56,9 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _systemColorObserverStreamSubscription =
-        AppkitUiElementColorsPlatform.systemColorObserver.stream.listen((_) =>
-            UiElementColorContainerSharedInstanceProvider.maybeUpdate(context));
+    _systemColorObserverStreamSubscription = AppkitUiElementColorsPlatform
+        .systemColorObserver.stream
+        .listen((_) => colorContainerProvider.maybeUpdate(context));
   }
 
   @override
@@ -66,18 +70,17 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
 
   @override
   void didChangePlatformBrightness() {
-    UiElementColorContainerSharedInstanceProvider.maybeUpdate(context);
+    colorContainerProvider.maybeUpdate(context);
     super.didChangePlatformBrightness();
   }
 
   @override
   Widget build(BuildContext context) {
-    UiElementColorContainerSharedInstanceProvider.maybeUpdate(context);
+    colorContainerProvider.maybeUpdate(context);
 
     return StreamBuilder(
-      initialData: UiElementColorContainerSharedInstanceProvider.sharedInstance,
-      stream: UiElementColorContainerSharedInstanceProvider
-          .onSharedInstanceUpdatedStream,
+      initialData: colorContainerProvider.instance,
+      stream: colorContainerProvider.onInstanceUpdatedStream,
       builder: (context, data) {
         if (!data.hasData) {
           return widget.missingDataBuilder != null
