@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:appkit_ui_element_colors/macos/ns_appearance_name.dart';
+import 'package:appkit_ui_element_colors/observers/system_color_observer.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'appkit_ui_element_colors.dart';
@@ -15,6 +16,8 @@ abstract class AppkitUiElementColorsPlatform extends PlatformInterface {
   static AppkitUiElementColorsPlatform _instance =
       MethodChannelAppkitUiElementColors();
 
+  static final SystemColorObserver _systemColorObserver = SystemColorObserver();
+
   /// The default instance of [AppkitUiElementColorsPlatform] to use.
   ///
   /// Defaults to [MethodChannelAppkitUiElementColors].
@@ -27,6 +30,9 @@ abstract class AppkitUiElementColorsPlatform extends PlatformInterface {
     PlatformInterface.verifyToken(instance, _token);
     _instance = instance;
   }
+
+  /// The default instance of [SystemColorObserver].
+  static SystemColorObserver get systemColorObserver => _systemColorObserver;
 
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');

@@ -6,6 +6,10 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
     let channel = FlutterMethodChannel(name: "appkit_ui_element_colors", binaryMessenger: registrar.messenger)
     let instance = AppkitUiElementColorsPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
+    
+    let systemColorsDidChangeMethodChannel = FlutterMethodChannel(name: "appkit_ui_element_colors/system_colors_did_change", binaryMessenger: registrar.messenger)
+    let systemColorObserver = SystemColorObserver.create(methodChannel: systemColorsDidChangeMethodChannel)
+    SystemColorObserver.registerSharedInstance(systemColorObserver)
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
