@@ -45,18 +45,21 @@ class UiElementColorBuilder extends StatefulWidget {
 
 class _UiElementColorBuilderState extends State<UiElementColorBuilder>
     with WidgetsBindingObserver {
-  StreamSubscription<void>? _systemColorObserverStreamSubscription;
+  late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    _systemColorObserverStreamSubscription =
+        AppkitUiElementColorsPlatform.systemColorObserver.stream.listen((_) =>
+            UiElementColorContainerSharedInstanceProvider.maybeUpdate(context));
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    _systemColorObserverStreamSubscription?.cancel();
+    _systemColorObserverStreamSubscription.cancel();
     super.dispose();
   }
 
@@ -68,10 +71,6 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
 
   @override
   Widget build(BuildContext context) {
-    _systemColorObserverStreamSubscription ??=
-        AppkitUiElementColorsPlatform.systemColorObserver.stream.listen((_) =>
-            UiElementColorContainerSharedInstanceProvider.maybeUpdate(context));
-
     UiElementColorContainerSharedInstanceProvider.maybeUpdate(context);
 
     return StreamBuilder(
