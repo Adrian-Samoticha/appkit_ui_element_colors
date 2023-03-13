@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:appkit_ui_element_colors/appkit_ui_element_colors_platform_interface.dart';
 import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_shared_instance_provider.dart';
 import 'package:flutter/widgets.dart';
 
@@ -42,6 +45,8 @@ class UiElementColorBuilder extends StatefulWidget {
 
 class _UiElementColorBuilderState extends State<UiElementColorBuilder>
     with WidgetsBindingObserver {
+  StreamSubscription<void>? _systemColorObserverStreamSubscription;
+
   @override
   void initState() {
     super.initState();
@@ -51,6 +56,7 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _systemColorObserverStreamSubscription?.cancel();
     super.dispose();
   }
 
@@ -62,6 +68,10 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
 
   @override
   Widget build(BuildContext context) {
+    _systemColorObserverStreamSubscription ??=
+        AppkitUiElementColorsPlatform.systemColorObserver.stream.listen((_) =>
+            UiElementColorContainerSharedInstanceProvider.maybeUpdate(context));
+
     UiElementColorContainerSharedInstanceProvider.maybeUpdate(context);
 
     return StreamBuilder(
