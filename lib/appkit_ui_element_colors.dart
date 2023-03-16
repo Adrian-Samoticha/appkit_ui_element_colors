@@ -31,6 +31,26 @@ class AppkitUiElementColors {
     return version;
   }
 
+  /// Generates a map that is populated with the [uiElementColor]’s color
+  /// components that have been specified in the [components] set.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// final components = await AppkitUiElementColors.getColorComponents(
+  ///   uiElementColor: UiElementColor.selectedControlColor,
+  ///   components: {
+  ///     NSColorComponent.redComponent,
+  ///     NSColorComponent.greenComponent,
+  ///     NSColorComponent.blueComponent,
+  ///   },
+  ///   colorSpace: NSColorSpace.sRGB,
+  ///   appearance: NSAppearanceName.aqua,
+  /// );
+  ///
+  /// // prints "{blueComponent: 0.7450980544090271, redComponent: 1.0, greenComponent: 0.9333333373069763}"
+  /// print(components);
+  /// ```
   static Future<Map<String, double>> getColorComponents({
     required UiElementColor uiElementColor,
     required Set<NSColorComponent> components,
