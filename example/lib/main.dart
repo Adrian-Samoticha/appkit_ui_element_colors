@@ -83,16 +83,17 @@ class _UiElementColorList extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  _UiElementColorNameText(
-                    colorContainer: colorContainer,
-                    uiElementColor: uiElementColor,
-                  ),
-                  const SizedBox(width: 12.0),
                   _ColorPreview(
                     uiElementColor: colorContainer
                         .getColorFromUiElementColor(uiElementColor),
                   ),
-                  const Spacer(),
+                  const SizedBox(width: 12.0),
+                  Expanded(
+                    child: _UiElementColorNameText(
+                      colorContainer: colorContainer,
+                      uiElementColor: uiElementColor,
+                    ),
+                  ),
                   _ColorHashText(
                     colorContainer: colorContainer,
                     uiElementColor: uiElementColor,
@@ -120,6 +121,8 @@ class _UiElementColorNameText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       uiElementColor.name,
+      softWrap: false,
+      overflow: TextOverflow.ellipsis,
       style: TextStyle(
         color: colorContainer.textColor,
       ),
