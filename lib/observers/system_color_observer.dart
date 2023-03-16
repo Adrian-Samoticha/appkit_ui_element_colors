@@ -26,7 +26,7 @@ class SystemColorObserver {
           return null;
       }
 
-      return null;
+      throw UnimplementedError('${call.method} has not been implemented.');
     });
   }
 }
