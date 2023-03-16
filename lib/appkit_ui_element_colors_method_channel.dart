@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 import 'appkit_ui_element_colors.dart';
-import 'appkit_ui_element_colors_platform_interface.dart';
 
 /// An implementation of [AppkitUiElementColorsPlatform] that uses method
 /// channels.
