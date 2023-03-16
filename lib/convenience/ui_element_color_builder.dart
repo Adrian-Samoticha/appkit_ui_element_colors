@@ -1,10 +1,8 @@
 import 'dart:async';
 
-import 'package:appkit_ui_element_colors/appkit_ui_element_colors_platform_interface.dart';
+import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
 import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_owned_instance_provider.dart';
 import 'package:flutter/widgets.dart';
-
-import 'ui_element_color_container.dart';
 
 /// Widget that builds itself based on a global shared [UiElementContainer]
 /// instance provided by [UiElementColorContainerSharedInstanceProvider].
@@ -56,7 +54,7 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _systemColorObserverStreamSubscription = AppkitUiElementColorsPlatform
+    _systemColorObserverStreamSubscription = AppkitUiElementColors
         .systemColorObserver.stream
         .listen((_) => colorContainerProvider.maybeUpdate(context));
   }

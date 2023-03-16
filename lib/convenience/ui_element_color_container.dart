@@ -74,9 +74,8 @@ class UiElementColorContainer extends Equatable {
           UiElementColor.selectedTextBackgroundColor, appearance),
       keyboardFocusIndicatorColor: await AppkitUiElementColors.getColor(
           UiElementColor.keyboardFocusIndicatorColor, appearance),
-      unemphasizedSelectedTextColor: await AppkitUiElementColorsPlatform
-          .instance
-          .getColor(UiElementColor.unemphasizedSelectedTextColor, appearance),
+      unemphasizedSelectedTextColor: await AppkitUiElementColors.getColor(
+          UiElementColor.unemphasizedSelectedTextColor, appearance),
       unemphasizedSelectedTextBackgroundColor:
           await AppkitUiElementColors.getColor(
               UiElementColor.unemphasizedSelectedTextBackgroundColor,
@@ -85,9 +84,8 @@ class UiElementColorContainer extends Equatable {
           UiElementColor.linkColor, appearance),
       separatorColor: await AppkitUiElementColors.getColor(
           UiElementColor.separatorColor, appearance),
-      selectedContentBackgroundColor: await AppkitUiElementColorsPlatform
-          .instance
-          .getColor(UiElementColor.selectedContentBackgroundColor, appearance),
+      selectedContentBackgroundColor: await AppkitUiElementColors.getColor(
+          UiElementColor.selectedContentBackgroundColor, appearance),
       unemphasizedSelectedContentBackgroundColor:
           await AppkitUiElementColors.getColor(
               UiElementColor.unemphasizedSelectedContentBackgroundColor,
