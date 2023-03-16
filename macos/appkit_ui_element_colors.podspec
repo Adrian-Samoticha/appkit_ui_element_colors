@@ -12,7 +12,7 @@ retrival of standard color objects for use with windows, controls, labels, text,
 selections and other content in your app.
                        DESC
   s.homepage         = 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors'
-  s.license          = { :file => '../LICENSE' }
+  s.license          = { :file => '../LICENSE', :type => 'MIT'  }
   s.author           = { 'Adrian Samoticha' => 'adrian@samoticha.de' }
 
   s.source           = { :git => 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors',
