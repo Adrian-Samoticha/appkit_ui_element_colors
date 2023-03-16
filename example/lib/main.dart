@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> {
     return const CupertinoApp(
       home: CupertinoPageScaffold(
         navigationBar: CupertinoNavigationBar(
-          middle: Text('Plugin example app'),
+          middle: Text('appkit_ui_element_colors example'),
         ),
         child: _UiElementColorList(),
       ),
