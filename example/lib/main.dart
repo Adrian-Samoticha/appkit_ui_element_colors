@@ -141,8 +141,14 @@ class _ColorHashText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = colorContainer
+        .getColorFromUiElementColor(uiElementColor)
+        .value
+        .toRadixString(16)
+        .padLeft(8, '0');
+
     return Text(
-      '#${colorContainer.getColorFromUiElementColor(uiElementColor).value.toRadixString(16).padLeft(8, '0')}',
+      '#$text',
       style: TextStyle(
         color: colorContainer.textColor.withOpacity(0.5),
       ),
