@@ -55,83 +55,156 @@ class UiElementColorContainer extends Equatable {
       NSAppearanceName appearance) async {
     return UiElementColorContainer._(
       labelColor: await AppkitUiElementColors.getColor(
-          UiElementColor.labelColor, appearance),
+        uiElementColor: UiElementColor.labelColor,
+        appearance: appearance,
+      ),
       secondaryLabelColor: await AppkitUiElementColors.getColor(
-          UiElementColor.secondaryLabelColor, appearance),
+        uiElementColor: UiElementColor.secondaryLabelColor,
+        appearance: appearance,
+      ),
       tertiaryLabelColor: await AppkitUiElementColors.getColor(
-          UiElementColor.tertiaryLabelColor, appearance),
+        uiElementColor: UiElementColor.tertiaryLabelColor,
+        appearance: appearance,
+      ),
       quaternaryLabelColor: await AppkitUiElementColors.getColor(
-          UiElementColor.quaternaryLabelColor, appearance),
+        uiElementColor: UiElementColor.quaternaryLabelColor,
+        appearance: appearance,
+      ),
       textColor: await AppkitUiElementColors.getColor(
-          UiElementColor.textColor, appearance),
+        uiElementColor: UiElementColor.textColor,
+        appearance: appearance,
+      ),
       placeholderTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.placeholderTextColor, appearance),
+        uiElementColor: UiElementColor.placeholderTextColor,
+        appearance: appearance,
+      ),
       selectedTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.selectedTextColor, appearance),
+        uiElementColor: UiElementColor.selectedTextColor,
+        appearance: appearance,
+      ),
       textBackgroundColor: await AppkitUiElementColors.getColor(
-          UiElementColor.textBackgroundColor, appearance),
+        uiElementColor: UiElementColor.textBackgroundColor,
+        appearance: appearance,
+      ),
       selectedTextBackgroundColor: await AppkitUiElementColors.getColor(
-          UiElementColor.selectedTextBackgroundColor, appearance),
+        uiElementColor: UiElementColor.selectedTextBackgroundColor,
+        appearance: appearance,
+      ),
       keyboardFocusIndicatorColor: await AppkitUiElementColors.getColor(
-          UiElementColor.keyboardFocusIndicatorColor, appearance),
+        uiElementColor: UiElementColor.keyboardFocusIndicatorColor,
+        appearance: appearance,
+      ),
       unemphasizedSelectedTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.unemphasizedSelectedTextColor, appearance),
+        uiElementColor: UiElementColor.unemphasizedSelectedTextColor,
+        appearance: appearance,
+      ),
       unemphasizedSelectedTextBackgroundColor:
           await AppkitUiElementColors.getColor(
-              UiElementColor.unemphasizedSelectedTextBackgroundColor,
-              appearance),
+        uiElementColor: UiElementColor.unemphasizedSelectedTextBackgroundColor,
+        appearance: appearance,
+      ),
       linkColor: await AppkitUiElementColors.getColor(
-          UiElementColor.linkColor, appearance),
+        uiElementColor: UiElementColor.linkColor,
+        appearance: appearance,
+      ),
       separatorColor: await AppkitUiElementColors.getColor(
-          UiElementColor.separatorColor, appearance),
+        uiElementColor: UiElementColor.separatorColor,
+        appearance: appearance,
+      ),
       selectedContentBackgroundColor: await AppkitUiElementColors.getColor(
-          UiElementColor.selectedContentBackgroundColor, appearance),
+        uiElementColor: UiElementColor.selectedContentBackgroundColor,
+        appearance: appearance,
+      ),
       unemphasizedSelectedContentBackgroundColor:
           await AppkitUiElementColors.getColor(
-              UiElementColor.unemphasizedSelectedContentBackgroundColor,
-              appearance),
+        uiElementColor:
+            UiElementColor.unemphasizedSelectedContentBackgroundColor,
+        appearance: appearance,
+      ),
       selectedMenuItemTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.selectedMenuItemTextColor, appearance),
+        uiElementColor: UiElementColor.selectedMenuItemTextColor,
+        appearance: appearance,
+      ),
       gridColor: await AppkitUiElementColors.getColor(
-          UiElementColor.gridColor, appearance),
+        uiElementColor: UiElementColor.gridColor,
+        appearance: appearance,
+      ),
       headerTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.headerTextColor, appearance),
+        uiElementColor: UiElementColor.headerTextColor,
+        appearance: appearance,
+      ),
       alternatingContentBackgroundColors0: await AppkitUiElementColors.getColor(
-          UiElementColor.alternatingContentBackgroundColors0, appearance),
+        uiElementColor: UiElementColor.alternatingContentBackgroundColors0,
+        appearance: appearance,
+      ),
       alternatingContentBackgroundColors1: await AppkitUiElementColors.getColor(
-          UiElementColor.alternatingContentBackgroundColors1, appearance),
+        uiElementColor: UiElementColor.alternatingContentBackgroundColors1,
+        appearance: appearance,
+      ),
       controlAccentColor: await AppkitUiElementColors.getColor(
-          UiElementColor.controlAccentColor, appearance),
+        uiElementColor: UiElementColor.controlAccentColor,
+        appearance: appearance,
+      ),
       controlColor: await AppkitUiElementColors.getColor(
-          UiElementColor.controlColor, appearance),
+        uiElementColor: UiElementColor.controlColor,
+        appearance: appearance,
+      ),
       controlBackgroundColor: await AppkitUiElementColors.getColor(
-          UiElementColor.controlBackgroundColor, appearance),
+        uiElementColor: UiElementColor.controlBackgroundColor,
+        appearance: appearance,
+      ),
       controlTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.controlTextColor, appearance),
+        uiElementColor: UiElementColor.controlTextColor,
+        appearance: appearance,
+      ),
       disabledControlTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.disabledControlTextColor, appearance),
+        uiElementColor: UiElementColor.disabledControlTextColor,
+        appearance: appearance,
+      ),
       currentControlTint: await AppkitUiElementColors.getColor(
-          UiElementColor.currentControlTint, appearance),
+        uiElementColor: UiElementColor.currentControlTint,
+        appearance: appearance,
+      ),
       selectedControlColor: await AppkitUiElementColors.getColor(
-          UiElementColor.selectedControlColor, appearance),
+        uiElementColor: UiElementColor.selectedControlColor,
+        appearance: appearance,
+      ),
       selectedControlTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.selectedControlTextColor, appearance),
+        uiElementColor: UiElementColor.selectedControlTextColor,
+        appearance: appearance,
+      ),
       alternateSelectedControlTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.alternateSelectedControlTextColor, appearance),
+        uiElementColor: UiElementColor.alternateSelectedControlTextColor,
+        appearance: appearance,
+      ),
       scrubberTexturedBackground: await AppkitUiElementColors.getColor(
-          UiElementColor.scrubberTexturedBackground, appearance),
+        uiElementColor: UiElementColor.scrubberTexturedBackground,
+        appearance: appearance,
+      ),
       windowBackgroundColor: await AppkitUiElementColors.getColor(
-          UiElementColor.windowBackgroundColor, appearance),
+        uiElementColor: UiElementColor.windowBackgroundColor,
+        appearance: appearance,
+      ),
       windowFrameTextColor: await AppkitUiElementColors.getColor(
-          UiElementColor.windowFrameTextColor, appearance),
+        uiElementColor: UiElementColor.windowFrameTextColor,
+        appearance: appearance,
+      ),
       underPageBackgroundColor: await AppkitUiElementColors.getColor(
-          UiElementColor.underPageBackgroundColor, appearance),
+        uiElementColor: UiElementColor.underPageBackgroundColor,
+        appearance: appearance,
+      ),
       findHighlightColor: await AppkitUiElementColors.getColor(
-          UiElementColor.findHighlightColor, appearance),
+        uiElementColor: UiElementColor.findHighlightColor,
+        appearance: appearance,
+      ),
       highlightColor: await AppkitUiElementColors.getColor(
-          UiElementColor.highlightColor, appearance),
+        uiElementColor: UiElementColor.highlightColor,
+        appearance: appearance,
+      ),
       shadowColor: await AppkitUiElementColors.getColor(
-          UiElementColor.shadowColor, appearance),
+        uiElementColor: UiElementColor.shadowColor,
+        appearance: appearance,
+      ),
     );
   }
 

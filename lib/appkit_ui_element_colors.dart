@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 export 'package:appkit_ui_element_colors/macos/ns_color_component.dart';
 export 'package:appkit_ui_element_colors/macos/ns_color_space.dart';
 export 'package:appkit_ui_element_colors/macos/ui_element_color.dart';
+export 'package:appkit_ui_element_colors/macos/ns_appearance_name.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_container.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_container_shared_instance_provider.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_builder.dart';
@@ -30,11 +31,12 @@ class AppkitUiElementColors {
     return version;
   }
 
-  static Future<Map<String, double>> getColorComponents(
-      UiElementColor uiElementColor,
-      Set<NSColorComponent> components,
-      NSColorSpace colorSpace,
-      NSAppearanceName appearance) async {
+  static Future<Map<String, double>> getColorComponents({
+    required UiElementColor uiElementColor,
+    required Set<NSColorComponent> components,
+    required NSColorSpace colorSpace,
+    required NSAppearanceName appearance,
+  }) async {
     final dynamicMap = await methodChannel.invokeMethod('getColorComponents', {
       'uiElementColor': uiElementColor.name,
       'components': components.map((e) => e.name).toList(),
@@ -45,8 +47,10 @@ class AppkitUiElementColors {
     return Map<String, double>.from(dynamicMap);
   }
 
-  static Future<Color> getColor(
-      UiElementColor uiElementColor, NSAppearanceName appearance) async {
+  static Future<Color> getColor({
+    required UiElementColor uiElementColor,
+    required NSAppearanceName appearance,
+  }) async {
     final int hash = await methodChannel.invokeMethod('getColor', {
       'uiElementColor': uiElementColor.name,
       'appearance': appearance.name,
