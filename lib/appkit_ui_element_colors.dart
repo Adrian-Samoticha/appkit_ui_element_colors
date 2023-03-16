@@ -67,6 +67,10 @@ class AppkitUiElementColors {
     return Map<String, double>.from(dynamicMap);
   }
 
+  /// Returns a [Color] object that represents the requested [uiElementColor]
+  /// with the given [appearance].
+  ///
+  /// The color is provided in `deviceRGB` color space.
   static Future<Color> getColor({
     required UiElementColor uiElementColor,
     required NSAppearanceName appearance,
