@@ -11,11 +11,12 @@ A Flutter plugin that exposes AppKit’s “UI Element Colors” to facilitate t
 retrival of standard color objects for use with windows, controls, labels, text,
 selections and other content in your app.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Adrian Samoticha' => 'adrian@samoticha.de' }
 
-  s.source           = { :path => '.' }
+  s.source           = { :git => 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors',
+	                       :tag => s.version.to_s }
   s.source_files     = 'Classes/**/*'
   s.dependency 'FlutterMacOS'
 
@@ -23,4 +24,3 @@ selections and other content in your app.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   s.swift_version = '5.0'
 end
-# TODO: complete this
