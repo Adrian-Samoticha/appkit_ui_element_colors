@@ -16,11 +16,13 @@ export 'package:appkit_ui_element_colors/convenience/ui_element_color_builder.da
 export 'package:appkit_ui_element_colors/appkit_ui_element_colors_platform_interface.dart';
 
 class AppkitUiElementColors {
-  Future<String?> getPlatformVersion() {
+  AppkitUiElementColors._();
+
+  static Future<String?> getPlatformVersion() {
     return AppkitUiElementColorsPlatform.instance.getPlatformVersion();
   }
 
-  Future<Map<String, double>> getColorComponents(
+  static Future<Map<String, double>> getColorComponents(
       UiElementColor uiElementColor,
       Set<NSColorComponent> components,
       NSColorSpace colorSpace,
@@ -29,7 +31,7 @@ class AppkitUiElementColors {
         .getColorComponents(uiElementColor, components, colorSpace, appearance);
   }
 
-  Future<Color> getColor(
+  static Future<Color> getColor(
       UiElementColor uiElementColor, NSAppearanceName appearance) {
     return AppkitUiElementColorsPlatform.instance
         .getColor(uiElementColor, appearance);
