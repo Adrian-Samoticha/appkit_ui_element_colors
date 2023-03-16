@@ -15,7 +15,7 @@ selections and other content in your app.
   s.license          = { :file => '../LICENSE', :type => 'MIT'  }
   s.author           = { 'Adrian Samoticha' => 'adrian@samoticha.de' }
 
-  s.source           = { :git => 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors',
+  s.source           = { :git => 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors.git',
 	                       :tag => s.version.to_s }
   s.source_files     = 'Classes/**/*'
   s.dependency 'FlutterMacOS'
