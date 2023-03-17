@@ -33,8 +33,8 @@ class OwnedUiElementColorContainerInstanceProvider
   Stream<UiElementColorContainer> get onInstanceUpdatedStream =>
       _onInstanceUpdatedStreamController.stream;
 
-  /// Gets a fitting [NSAppearanceName] given the given [BuildContext]’s
-  /// platform brightness.
+  /// Returns an appropriate [NSAppearanceName] depending on the provided
+  /// [BuildContext].
   NSAppearanceName _getNSAppearanceNameFromBuildContext(BuildContext context) {
     final mediaQueryData = MediaQuery.of(context);
 

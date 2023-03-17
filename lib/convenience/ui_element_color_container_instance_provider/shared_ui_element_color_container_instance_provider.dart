@@ -33,8 +33,8 @@ class SharedUiElementColorContainerInstanceProvider
   Stream<UiElementColorContainer> get onInstanceUpdatedStream =>
       _onSharedInstanceUpdatedStreamController.stream;
 
-  /// Gets a fitting [NSAppearanceName] given the given [BuildContext]’s
-  /// platform brightness.
+  /// Returns an appropriate [NSAppearanceName] depending on the provided
+  /// [BuildContext].
   static NSAppearanceName _getNSAppearanceNameFromBuildContext(
     BuildContext context,
   ) {
