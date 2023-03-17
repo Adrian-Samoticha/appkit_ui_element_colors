@@ -46,7 +46,7 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
   UiElementColorContainerOwnedInstanceProvider colorContainerProvider =
       UiElementColorContainerOwnedInstanceProvider();
 
-  /// The stream subscription for stream of the [SystemColorObserver].
+  /// The stream subscription for the stream of the [SystemColorObserver].
   late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
   @override
