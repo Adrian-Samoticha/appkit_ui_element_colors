@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
-import 'package:appkit_ui_element_colors/macos/ns_appearance_name.dart';
 
 import 'package:equatable/equatable.dart';
 
