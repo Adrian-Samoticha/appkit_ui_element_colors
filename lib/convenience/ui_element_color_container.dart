@@ -464,6 +464,7 @@ class UiElementColorContainer extends Equatable {
     final strings = UiElementColor.values
         .map((e) => '$e: ${getColorFromUiElementColor(e)}');
     buffer.writeAll(strings, ', ');
+
     return buffer.toString();
   }
 
