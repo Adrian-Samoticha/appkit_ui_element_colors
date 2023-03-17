@@ -41,8 +41,7 @@ class UiElementColorBuilder extends StatefulWidget {
   State<UiElementColorBuilder> createState() => _UiElementColorBuilderState();
 }
 
-class _UiElementColorBuilderState extends State<UiElementColorBuilder>
-    with WidgetsBindingObserver {
+class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
   /// An [UiElementColorContainerOwnedInstanceProvider] instance.
   UiElementColorContainerOwnedInstanceProvider colorContainerProvider =
       UiElementColorContainerOwnedInstanceProvider();
@@ -53,7 +52,6 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     _systemColorObserverStreamSubscription = AppkitUiElementColors
         .systemColorObserver.stream
         .listen((_) => colorContainerProvider.maybeUpdate(context));
@@ -61,15 +59,8 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder>
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
     _systemColorObserverStreamSubscription.cancel();
     super.dispose();
-  }
-
-  @override
-  void didChangePlatformBrightness() {
-    colorContainerProvider.maybeUpdate(context);
-    super.didChangePlatformBrightness();
   }
 
   @override
