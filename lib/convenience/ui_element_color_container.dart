@@ -51,7 +51,8 @@ class UiElementColorContainer extends Equatable {
   /// Fetches the UI Element Colors from the Swift side and creates a
   /// [UiElementColorContainer] out of them.
   static Future<UiElementColorContainer> generate(
-      NSAppearanceName appearance) async {
+    NSAppearanceName appearance,
+  ) async {
     return UiElementColorContainer._(
       labelColor: await AppkitUiElementColors.getColor(
         uiElementColor: UiElementColor.labelColor,
