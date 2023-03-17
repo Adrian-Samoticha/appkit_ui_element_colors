@@ -15,7 +15,14 @@ class OwnedUiElementColorContainerInstanceProvider
     implements UiElementColorContainerInstanceProvider {
   /// Creates an [OwnedUiElementColorContainerInstanceProvider], a class that
   /// provides a local owned instance of [UiElementColorContainer].
-  OwnedUiElementColorContainerInstanceProvider();
+  OwnedUiElementColorContainerInstanceProvider({this.nsAppearanceNameOverride});
+
+  /// Overrides the [NSAppearanceName] to be used for the generation of
+  /// [UiElementColorContainer]s.
+  ///
+  /// May be null, in which case the [NSAppearanceName] to be used is determined
+  /// from the current [MediaQueryData].
+  final NSAppearanceName? nsAppearanceNameOverride;
 
   /// The local instance of [UiElementColorContainer].
   UiElementColorContainer? _instance;
@@ -62,7 +69,8 @@ class OwnedUiElementColorContainerInstanceProvider
   /// [instance] if a change is detected.
   @override
   Future<void> maybeUpdate(BuildContext context) async {
-    final appearanceName = _getNSAppearanceNameFromBuildContext(context);
+    final appearanceName = nsAppearanceNameOverride ??
+        _getNSAppearanceNameFromBuildContext(context);
     final newUiElementColorContainer =
         await UiElementColorContainer.generate(appearanceName);
 
