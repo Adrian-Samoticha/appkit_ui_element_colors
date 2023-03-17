@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
-import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_owned_instance_provider.dart';
+import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_instance_provider/ui_element_color_container_instance_provider.dart';
 import 'package:flutter/widgets.dart';
 
 /// Widget that builds itself based on a global shared [UiElementContainer]
-/// instance provided by [UiElementColorContainerSharedInstanceProvider].
+/// instance provided by [SharedUiElementColorContainerInstanceProvider].
 class UiElementColorBuilder extends StatefulWidget {
   /// Creates a [UiElementColorBuilder] that builds itself based on a global
   /// shared [UiElementContainer] instance.
@@ -14,6 +14,7 @@ class UiElementColorBuilder extends StatefulWidget {
   /// are replaced with `const SizedBox()`.
   ///
   /// Example:
+  ///
   /// ```dart
   /// UiElementColorBuilder(
   ///   builder: (context, colorContainer) => Container(
@@ -21,12 +22,53 @@ class UiElementColorBuilder extends StatefulWidget {
   ///   ),
   /// );
   /// ```
+  ///
+  /// **Warning:** By default, [UiElementColorBuilder] uses a
+  /// [SharedUiElementColorContainerInstanceProvider] to provide a global
+  /// shared instance of [UiElementColorContainer].
+  /// [SharedUiElementColorContainerInstanceProvider] uses an instance of
+  /// [MediaQueryData] derived from the current [BuildContext] and assumes it to
+  /// be the same across all [UiElementBuilder]s which use it.
+  ///
+  /// If your app contains surfaces with different [MediaQueryData] overrides,
+  /// use [OwnedUiElementColorContainerInstanceProvider] instead:
+  ///
+  /// ```dart
+  /// // A dark cupertino theme.
+  /// CupertinoTheme(
+  ///   data: const CupertinoThemeData(
+  ///     brightness: Brightness.dark,
+  ///   ),
+  ///   // Override the MediaQueryData so that platformBrightness is dark.
+  ///   child: MediaQuery(
+  ///     data: MediaQuery.of(context).copyWith(
+  ///       platformBrightness: Brightness.dark,
+  ///     ),
+  ///     child: UiElementColorBuilder(
+  ///       // Since there may be surfaces within the app that do not override the
+  ///       // brightness, use an OwnedUiElementColorContainerInstanceProvider.
+  ///       uiElementColorContainerInstanceProvider:
+  ///           OwnedUiElementColorContainerInstanceProvider(),
+  ///       builder: (context, colorContainer) => Container(
+  ///         color: colorContainer.windowBackgroundColor,
+  ///       ),
+  ///     ),
+  ///   ),
+  /// );
+  /// ```
   const UiElementColorBuilder({
     super.key,
+    this.uiElementColorContainerInstanceProvider =
+        const SharedUiElementColorContainerInstanceProvider(),
     required this.builder,
     this.errorBuilder,
     this.missingDataBuilder,
   });
+
+  /// The [UiElementColorContainerInstanceProvider] that provides the
+  /// [UiElementColorContainer] to be used by this [UiElementColorBuilder].
+  final UiElementColorContainerInstanceProvider
+      uiElementColorContainerInstanceProvider;
 
   /// Called at build time to construct a widget tree.
   final Widget Function(BuildContext, UiElementColorContainer) builder;
@@ -42,10 +84,6 @@ class UiElementColorBuilder extends StatefulWidget {
 }
 
 class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
-  /// An [UiElementColorContainerOwnedInstanceProvider] instance.
-  UiElementColorContainerOwnedInstanceProvider colorContainerProvider =
-      UiElementColorContainerOwnedInstanceProvider();
-
   /// The stream subscription for the stream of the [SystemColorObserver].
   late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
@@ -54,7 +92,8 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
     super.initState();
     _systemColorObserverStreamSubscription = AppkitUiElementColors
         .systemColorObserver.stream
-        .listen((_) => colorContainerProvider.maybeUpdate(context));
+        .listen((_) => widget.uiElementColorContainerInstanceProvider
+            .maybeUpdate(context));
   }
 
   @override
@@ -65,11 +104,12 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
 
   @override
   Widget build(BuildContext context) {
-    colorContainerProvider.maybeUpdate(context);
+    widget.uiElementColorContainerInstanceProvider.maybeUpdate(context);
 
     return StreamBuilder(
-      initialData: colorContainerProvider.instance,
-      stream: colorContainerProvider.onInstanceUpdatedStream,
+      initialData: widget.uiElementColorContainerInstanceProvider.instance,
+      stream: widget
+          .uiElementColorContainerInstanceProvider.onInstanceUpdatedStream,
       builder: (context, data) {
         if (!data.hasData) {
           return widget.missingDataBuilder != null

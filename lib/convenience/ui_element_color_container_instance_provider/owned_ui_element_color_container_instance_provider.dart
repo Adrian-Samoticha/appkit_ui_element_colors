@@ -1,16 +1,22 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:appkit_ui_element_colors/convenience/ui_element_color_container.dart';
 import 'package:appkit_ui_element_colors/macos/ns_appearance_name.dart';
 import 'package:flutter/widgets.dart';
 
-import 'ui_element_color_container.dart';
+import 'ui_element_color_container_instance_provider.dart';
 
 /// A class that provides a local owned instance of [UiElementColorContainer].
 ///
 /// [instance] is initially `null` until [maybeUpdate] is called for the
 /// first time.
-class UiElementColorContainerOwnedInstanceProvider {
+class OwnedUiElementColorContainerInstanceProvider
+    implements UiElementColorContainerInstanceProvider {
+  /// Creates an [OwnedUiElementColorContainerInstanceProvider], a class that
+  /// provides a local owned instance of [UiElementColorContainer].
+  OwnedUiElementColorContainerInstanceProvider();
+
   /// The local instance of [UiElementColorContainer].
   UiElementColorContainer? _instance;
 
@@ -19,16 +25,31 @@ class UiElementColorContainerOwnedInstanceProvider {
       StreamController<UiElementColorContainer>.broadcast();
 
   /// The local instance of [UiElementColorContainer].
+  @override
   UiElementColorContainer? get instance => _instance;
 
   /// A stream that can be used to listen for [instance] changes.
+  @override
   Stream<UiElementColorContainer> get onInstanceUpdatedStream =>
       _onInstanceUpdatedStreamController.stream;
 
   /// Gets a fitting [NSAppearanceName] given the given [BuildContext]’s
   /// platform brightness.
   NSAppearanceName _getNSAppearanceNameFromBuildContext(BuildContext context) {
-    final brightness = MediaQuery.of(context).platformBrightness;
+    final mediaQueryData = MediaQuery.of(context);
+
+    final highContrast = mediaQueryData.highContrast;
+    final brightness = mediaQueryData.platformBrightness;
+
+    if (highContrast) {
+      switch (brightness) {
+        case Brightness.dark:
+          return NSAppearanceName.accessibilityHighContrastDarkAqua;
+        case Brightness.light:
+          return NSAppearanceName.accessibilityHighContrastAqua;
+      }
+    }
+
     switch (brightness) {
       case Brightness.dark:
         return NSAppearanceName.darkAqua;
@@ -39,6 +60,7 @@ class UiElementColorContainerOwnedInstanceProvider {
 
   /// Generates a new [UiElementColorContainer] and updates the current
   /// [instance] if a change is detected.
+  @override
   Future<void> maybeUpdate(BuildContext context) async {
     final appearanceName = _getNSAppearanceNameFromBuildContext(context);
     final newUiElementColorContainer =

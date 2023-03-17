@@ -10,7 +10,7 @@ export 'package:appkit_ui_element_colors/macos/ns_color_space.dart';
 export 'package:appkit_ui_element_colors/macos/ui_element_color.dart';
 export 'package:appkit_ui_element_colors/macos/ns_appearance_name.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_container.dart';
-export 'package:appkit_ui_element_colors/convenience/ui_element_color_container_shared_instance_provider.dart';
+export 'package:appkit_ui_element_colors/convenience/ui_element_color_container_instance_provider/shared_ui_element_color_container_instance_provider.dart';
 export 'package:appkit_ui_element_colors/convenience/ui_element_color_builder.dart';
 
 class AppkitUiElementColors {
