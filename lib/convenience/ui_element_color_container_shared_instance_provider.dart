@@ -28,7 +28,8 @@ class UiElementColorContainerSharedInstanceProvider {
   /// Gets a fitting [NSAppearanceName] given the given [BuildContext]’s
   /// platform brightness.
   static NSAppearanceName _getNSAppearanceNameFromBuildContext(
-      BuildContext context) {
+    BuildContext context,
+  ) {
     final brightness = MediaQuery.of(context).platformBrightness;
     switch (brightness) {
       case Brightness.dark:
