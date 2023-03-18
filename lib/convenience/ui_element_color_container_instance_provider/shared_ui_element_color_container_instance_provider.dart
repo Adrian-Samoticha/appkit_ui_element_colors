@@ -75,7 +75,8 @@ class SharedUiElementColorContainerInstanceProvider
     }
   }
 
-  /// TODO: document this
+  /// Determines if [data] is conflicting with an already present
+  /// [MediaQueryData] registration.
   bool _isMediaQueryDataConflicting(MediaQueryData data) {
     for (final other in _mediaQueryDataRegistrations.values) {
       if (other.platformBrightness != data.platformBrightness ||
@@ -87,7 +88,10 @@ class SharedUiElementColorContainerInstanceProvider
     return false;
   }
 
-  /// TODO: document this
+  /// Adds [mediaQueryData] to [_mediaQueryDataRegistrations].
+  ///
+  /// Returns whether [mediaQueryData] is conflicting with an already active
+  /// [MediaQueryData] registration.
   bool _addMediaQueryData(
     MediaQueryData mediaQueryData,
     MediaQueryDataRegistration registration,
@@ -98,7 +102,17 @@ class SharedUiElementColorContainerInstanceProvider
     return isConflicting;
   }
 
-  /// TODO: document this
+  /// Registers a [MediaQueryData] object to this
+  /// [SharedUiElementColorContainerInstanceProvider].
+  ///
+  /// In debug-mode, when a [MediaQueryData] object is registered that is
+  /// conflicting with an already active [MediaQueryData] registration (that is,
+  /// the colors generated using this [MediaQueryData] object may differ from
+  /// one of the already present [MediaQueryData] registrations), an assertion
+  /// error is thrown.
+  ///
+  /// In that case [OwnedUiElementColorContainerInstanceProvider] should be used
+  /// instead.
   @override
   MediaQueryDataRegistration registerMediaQueryData(
     MediaQueryData mediaQueryData,
@@ -117,7 +131,8 @@ class SharedUiElementColorContainerInstanceProvider
     return registration;
   }
 
-  /// TODO: document this
+  /// Deregisters a [MediaQueryData] object from this
+  /// [SharedUiElementColorContainerInstanceProvider].
   @override
   void deregisterMediaQueryData(MediaQueryDataRegistration registration) {
     _mediaQueryDataRegistrations.remove(registration);
