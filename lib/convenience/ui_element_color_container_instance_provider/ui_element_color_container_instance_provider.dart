@@ -13,12 +13,14 @@ abstract class UiElementColorContainerInstanceProvider {
   /// [instance] if a change is detected.
   Future<void> maybeUpdate(BuildContext context);
 
-  /// TODO: document this
+  /// Registers a [MediaQueryData] object to this
+  /// [UiElementColorContainerInstanceProvider].
   MediaQueryDataRegistration registerMediaQueryData(
     MediaQueryData mediaQueryData,
   );
 
-  /// TODO: document this
+  /// Deregisters a [MediaQueryData] object from this
+  /// [UiElementColorContainerInstanceProvider].
   void deregisterMediaQueryData(MediaQueryDataRegistration registration);
 }
 
