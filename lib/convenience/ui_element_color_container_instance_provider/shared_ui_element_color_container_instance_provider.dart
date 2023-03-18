@@ -125,7 +125,7 @@ class SharedUiElementColorContainerInstanceProvider
         'SharedUiElementColorContainerInstanceProvider. If you are using '
         'UiElementColorBuilder within widget subtrees with differing '
         'MediaQueryData (such as different theme brightness or accessibility '
-        'settings), please use OwnedUiElementColorContainerInstanceProvider, '
+        'settings), please use OwnedUiElementColorContainerInstanceProvider '
         'instead.');
 
     return registration;
