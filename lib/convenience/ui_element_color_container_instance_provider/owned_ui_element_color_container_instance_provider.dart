@@ -79,4 +79,16 @@ class OwnedUiElementColorContainerInstanceProvider
       _onInstanceUpdatedStreamController.add(newUiElementColorContainer);
     }
   }
+
+  /// TODO: document this
+  @override
+  MediaQueryDataRegistration registerMediaQueryData(
+    MediaQueryData mediaQueryData,
+  ) {
+    return MediaQueryDataRegistration.create();
+  }
+
+  /// TODO: document this
+  @override
+  void deregisterMediaQueryData(MediaQueryDataRegistration registration) {}
 }

@@ -24,6 +24,9 @@ class SharedUiElementColorContainerInstanceProvider
   static final _onSharedInstanceUpdatedStreamController =
       StreamController<UiElementColorContainer>.broadcast();
 
+  static final _mediaQueryDataRegistrations =
+      <MediaQueryDataRegistration, MediaQueryData>{};
+
   /// The global shared instance of [UiElementColorContainer].
   @override
   UiElementColorContainer? get instance => _sharedInstance;
@@ -70,5 +73,53 @@ class SharedUiElementColorContainerInstanceProvider
       _sharedInstance = newUiElementColorContainer;
       _onSharedInstanceUpdatedStreamController.add(newUiElementColorContainer);
     }
+  }
+
+  /// TODO: document this
+  bool _isMediaQueryDataConflicting(MediaQueryData data) {
+    for (final other in _mediaQueryDataRegistrations.values) {
+      if (other.platformBrightness != data.platformBrightness ||
+          other.highContrast != data.highContrast) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  /// TODO: document this
+  bool _addMediaQueryData(
+    MediaQueryData mediaQueryData,
+    MediaQueryDataRegistration registration,
+  ) {
+    final isConflicting = _isMediaQueryDataConflicting(mediaQueryData);
+    _mediaQueryDataRegistrations[registration] = mediaQueryData;
+
+    return isConflicting;
+  }
+
+  /// TODO: document this
+  @override
+  MediaQueryDataRegistration registerMediaQueryData(
+    MediaQueryData mediaQueryData,
+  ) {
+    final registration = MediaQueryDataRegistration.create();
+
+    assert(
+        !_addMediaQueryData(mediaQueryData, registration),
+        'Found conflicting MediaQueryData in '
+        'SharedUiElementColorContainerInstanceProvider. If you are using '
+        'UiElementColorBuilder within widget subtrees with differing '
+        'MediaQueryData (such as different theme brightness or accessibility '
+        'settings), please use OwnedUiElementColorContainerInstanceProvider, '
+        'instead.');
+
+    return registration;
+  }
+
+  /// TODO: document this
+  @override
+  void deregisterMediaQueryData(MediaQueryDataRegistration registration) {
+    _mediaQueryDataRegistrations.remove(registration);
   }
 }

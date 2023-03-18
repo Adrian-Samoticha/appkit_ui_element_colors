@@ -87,9 +87,13 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
   /// The stream subscription for the stream of the [SystemColorObserver].
   late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
+  /// TODO: document this
+  MediaQueryDataRegistration? _mediaQueryDataRegistration;
+
   @override
   void initState() {
     super.initState();
+
     _systemColorObserverStreamSubscription = AppkitUiElementColors
         .systemColorObserver.stream
         .listen((_) => widget.uiElementColorContainerInstanceProvider
@@ -97,8 +101,26 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
   }
 
   @override
+  void didChangeDependencies() {
+    if (_mediaQueryDataRegistration == null) {
+      final mediaQueryData = MediaQuery.of(context);
+      _mediaQueryDataRegistration = widget
+          .uiElementColorContainerInstanceProvider
+          .registerMediaQueryData(mediaQueryData);
+    }
+
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     _systemColorObserverStreamSubscription.cancel();
+
+    if (_mediaQueryDataRegistration != null) {
+      widget.uiElementColorContainerInstanceProvider
+          .deregisterMediaQueryData(_mediaQueryDataRegistration!);
+    }
+
     super.dispose();
   }
 
