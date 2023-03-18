@@ -87,7 +87,8 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
   /// The stream subscription for the stream of the [SystemColorObserver].
   late StreamSubscription<void> _systemColorObserverStreamSubscription;
 
-  /// TODO: document this
+  /// The [uiElementColorContainerInstanceProvider]’s media query data
+  /// registration.
   MediaQueryDataRegistration? _mediaQueryDataRegistration;
 
   @override
