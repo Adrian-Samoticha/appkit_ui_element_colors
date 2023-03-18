@@ -16,9 +16,6 @@ public class AppkitUiElementColorsPlugin: NSObject, FlutterPlugin {
     let args: [String: Any] = call.arguments as? [String: Any] ?? [:]
     
     switch call.method {
-    case "getPlatformVersion":
-      result("macOS " + ProcessInfo.processInfo.operatingSystemVersionString)
-        
     case "getColorComponents":
       let colorName = args["uiElementColor"] as! String
       let color = NSColorNameToColorConverter.convert(colorName)

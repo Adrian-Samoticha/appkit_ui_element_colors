@@ -25,13 +25,6 @@ class AppkitUiElementColors {
   /// The default instance of [SystemColorObserver].
   static SystemColorObserver get systemColorObserver => _systemColorObserver;
 
-  static Future<String?> getPlatformVersion() async {
-    final version =
-        await methodChannel.invokeMethod<String>('getPlatformVersion');
-
-    return version;
-  }
-
   /// Generates a map that is populated with the [uiElementColor]’s color
   /// components that have been specified in the [components] set.
   ///
