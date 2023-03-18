@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'appkit_ui_element_colors'
-  s.version          = '0.0.1'
+  s.version          = '1.0.0'
   s.summary          = 'A Flutter plugin that exposes AppKit’s “UI Element Colors.”'
   s.description      = <<-DESC
 A Flutter plugin that exposes AppKit’s “UI Element Colors” to facilitate the
