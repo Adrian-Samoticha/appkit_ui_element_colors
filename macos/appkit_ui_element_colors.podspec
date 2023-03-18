@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.summary          = 'A Flutter plugin that exposes AppKit’s “UI Element Colors.”'
   s.description      = <<-DESC
 A Flutter plugin that exposes AppKit’s “UI Element Colors” to facilitate the
-retrival of standard color objects for use with windows, controls, labels, text,
+retrieval of standard color objects for use with windows, controls, labels, text,
 selections and other content in your app.
                        DESC
   s.homepage         = 'https://github.com/Adrian-Samoticha/appkit_ui_element_colors'
