@@ -22,13 +22,17 @@ abstract class UiElementColorContainerInstanceProvider {
   void deregisterMediaQueryData(MediaQueryDataRegistration registration);
 }
 
-/// TODO: document this
+/// A media query data registration.
 class MediaQueryDataRegistration extends Equatable {
+  /// This [MediaQueryDataRegistration]’s ID.
   final int id;
+
+  /// The id of the next [MediaQueryDataRegistration] to be created.
   static int nextId = 0;
 
   const MediaQueryDataRegistration._(this.id);
 
+  /// Creates a new [MediaQueryDataRegistration].
   factory MediaQueryDataRegistration.create() {
     final newInstanceId = nextId;
     nextId += 1;
