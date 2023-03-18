@@ -80,7 +80,12 @@ class OwnedUiElementColorContainerInstanceProvider
     }
   }
 
-  /// TODO: document this
+  /// Registers a [MediaQueryData] object to this
+  /// [OwnedUiElementColorContainerInstanceProvider].
+  ///
+  /// Since [OwnedUiElementColorContainerInstanceProvider] provides an owned,
+  /// and therefore unshared [UiElementColorContainer], this method does not
+  /// need to keep track of registered [MediaQueryData] objects.
   @override
   MediaQueryDataRegistration registerMediaQueryData(
     MediaQueryData mediaQueryData,
@@ -88,7 +93,8 @@ class OwnedUiElementColorContainerInstanceProvider
     return MediaQueryDataRegistration.create();
   }
 
-  /// TODO: document this
+  /// Deregisters a [MediaQueryData] object from this
+  /// [OwnedUiElementColorContainerInstanceProvider].
   @override
   void deregisterMediaQueryData(MediaQueryDataRegistration registration) {}
 }
