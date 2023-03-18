@@ -13,7 +13,7 @@ class UiElementColorBuilder extends StatefulWidget {
   /// [errorBuilder] and [missingDataBuilder] may be null, in which case they
   /// are replaced with `const SizedBox()`.
   ///
-  /// Example:
+  /// **Example:**
   ///
   /// ```dart
   /// UiElementColorBuilder(

@@ -34,7 +34,7 @@ class AppkitUiElementColors {
   /// Generates a map that is populated with the [uiElementColor]’s color
   /// components that have been specified in the [components] set.
   ///
-  /// Example:
+  /// **Example:**
   ///
   /// ```dart
   /// final components = await AppkitUiElementColors.getColorComponents(
