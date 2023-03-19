@@ -91,13 +91,18 @@ class _UiElementColorNameText extends StatelessWidget {
   }
 }
 
+/// A widget that displays the hash text of a color.
 class _ColorHashText extends StatelessWidget {
+  /// Creates a [_ColorHashText] for [uiElementColor].
   const _ColorHashText({
     required this.colorContainer,
     required this.uiElementColor,
   });
 
+  /// A color container, used to style the text.
   final UiElementColorContainer colorContainer;
+
+  /// The color whose hash text should be displayed
   final UiElementColor uiElementColor;
 
   @override
