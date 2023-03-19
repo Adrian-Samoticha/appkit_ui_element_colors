@@ -69,13 +69,18 @@ class _UiElementColorList extends StatelessWidget {
   }
 }
 
+/// A widget that displays the name of a [uiElementColor].
 class _UiElementColorNameText extends StatelessWidget {
+  /// Creates a [_UiElementColorNameText] for [uiElementColor].
   const _UiElementColorNameText({
     required this.colorContainer,
     required this.uiElementColor,
   });
 
+  /// A color container, used to style the text.
   final UiElementColorContainer colorContainer;
+
+  /// The color whose name text should be displayed.
   final UiElementColor uiElementColor;
 
   @override
