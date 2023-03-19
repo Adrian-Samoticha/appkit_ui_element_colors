@@ -1,7 +1,7 @@
 name: appkit_ui_element_colors
 description: A new Flutter plugin project.
 version: 1.0.0
-homepage:
+repository: https://github.com/Adrian-Samoticha/appkit_ui_element_colors/
 
 environment:
   sdk: '>=2.19.3 <3.0.0'
