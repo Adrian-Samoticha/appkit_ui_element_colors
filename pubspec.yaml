@@ -1,5 +1,5 @@
 name: appkit_ui_element_colors
-description: A new Flutter plugin project.
+description: A Flutter plugin that exposes AppKit’s “UI Element Colors.”
 version: 1.0.0
 repository: https://github.com/Adrian-Samoticha/appkit_ui_element_colors/
 
