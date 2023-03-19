@@ -117,11 +117,17 @@ class _ColorHashText extends StatelessWidget {
   }
 }
 
+/// A widget that displays a square with a given color.
+///
+/// If the color is transparent, a checkerboard pattern will be displayed
+/// underneath the square.
 class _ColorPreview extends StatelessWidget {
+  /// Creates a [_ColorPreview] with a specified UI element color.
   const _ColorPreview({
     required this.uiElementColor,
   });
 
+  /// The color to preview.
   final Color uiElementColor;
 
   @override
