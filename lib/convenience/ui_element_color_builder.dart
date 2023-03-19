@@ -4,11 +4,11 @@ import 'package:appkit_ui_element_colors/appkit_ui_element_colors.dart';
 import 'package:appkit_ui_element_colors/convenience/ui_element_color_container_instance_provider/ui_element_color_container_instance_provider.dart';
 import 'package:flutter/widgets.dart';
 
-/// Widget that builds itself based on a global shared [UiElementContainer]
+/// Widget that builds itself based on a provided [UiElementContainer]
 /// instance provided by [SharedUiElementColorContainerInstanceProvider].
 class UiElementColorBuilder extends StatefulWidget {
-  /// Creates a [UiElementColorBuilder] that builds itself based on a global
-  /// shared [UiElementContainer] instance.
+  /// Creates a [UiElementColorBuilder] that builds itself based on a provided
+  /// [UiElementContainer] instance.
   ///
   /// [errorBuilder] and [missingDataBuilder] may be null, in which case they
   /// are replaced with `const SizedBox()`.
