@@ -2,15 +2,7 @@
 
 Demonstrates how to use the appkit_ui_element_colors plugin.
 
-## Getting Started
+## Screenshot
 
-This project is a starting point for a Flutter application.
+<img width="678" alt="Screenshot 2023-03-19 at 12 36 03" src="https://user-images.githubusercontent.com/86920182/226172721-11429992-2a5c-4575-9d41-c8b14eab745d.png">
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
