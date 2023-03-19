@@ -107,7 +107,7 @@ class _ColorHashText extends StatelessWidget {
   /// A color container, used to style the text.
   final UiElementColorContainer colorContainer;
 
-  /// The color whose hash text should be displayed
+  /// The color whose hash text should be displayed.
   final UiElementColor uiElementColor;
 
   @override
