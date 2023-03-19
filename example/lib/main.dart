@@ -22,11 +22,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// A list of all UI element colors.
 class _UiElementColorList extends StatelessWidget {
   const _UiElementColorList();
 
   @override
   Widget build(BuildContext context) {
+    // UiElement Builder provides a convenient way to build widgets that depend
+    // on UI element colors.
     return UiElementColorBuilder(
       builder: (context, colorContainer) {
         return ListView.builder(
