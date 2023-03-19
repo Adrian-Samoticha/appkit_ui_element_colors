@@ -8,7 +8,7 @@ selections and other content in your app.
 
 <img width="678" alt="Screenshot 2023-03-19 at 12 36 03" src="https://user-images.githubusercontent.com/86920182/226172721-11429992-2a5c-4575-9d41-c8b14eab745d.png">
 
-## Getting Started
+## Getting started
 
 Install this package:
 
