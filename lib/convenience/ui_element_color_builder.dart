@@ -103,12 +103,14 @@ class _UiElementColorBuilderState extends State<UiElementColorBuilder> {
 
   @override
   void didChangeDependencies() {
-    if (_mediaQueryDataRegistration == null) {
-      final mediaQueryData = MediaQuery.of(context);
-      _mediaQueryDataRegistration = widget
-          .uiElementColorContainerInstanceProvider
-          .registerMediaQueryData(mediaQueryData);
+    if (_mediaQueryDataRegistration != null) {
+      widget.uiElementColorContainerInstanceProvider
+          .deregisterMediaQueryData(_mediaQueryDataRegistration!);
     }
+
+    final mediaQueryData = MediaQuery.of(context);
+    _mediaQueryDataRegistration = widget.uiElementColorContainerInstanceProvider
+        .registerMediaQueryData(mediaQueryData);
 
     super.didChangeDependencies();
   }
