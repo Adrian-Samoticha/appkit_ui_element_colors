@@ -4,6 +4,10 @@ A Flutter plugin that exposes AppKit’s [“UI Element Colors”](https://devel
 retrieval of standard color objects for use with windows, controls, labels, text,
 selections and other content in your app.
 
+## Screenshot of example project
+
+<img width="678" alt="Screenshot 2023-03-19 at 12 36 03" src="https://user-images.githubusercontent.com/86920182/226172721-11429992-2a5c-4575-9d41-c8b14eab745d.png">
+
 ## Getting Started
 
 Install this package:
